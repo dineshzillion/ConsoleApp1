@@ -1,0 +1,24 @@
+﻿@model BuildDashboard.Models.BuildDetails 
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        Welcome
+    </h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <!--<p>@ViewBag.displaydata</p>-->
+
+<table>
+    <tr><th>class</th></tr>
+
+    @foreach (var item in Model.builds)
+    {
+        <tr><td>@Html.DisplayFor(item => item._class)</td></tr>
+        <tr><td>@Html.DisplayFor(item => item.id)</td></tr>
+        <tr><td></td></tr>
+    }
+</table>
+</div>
