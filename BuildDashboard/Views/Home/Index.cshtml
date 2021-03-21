@@ -9,16 +9,39 @@
         Welcome
     </h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <!--<p>@ViewBag.displaydata</p>-->
+    <p><a href="http://localhost:8080/job/DotNet/build?token=mytoken">build now</a></p>
+    <table border="1" align="center">
+        <tr><th>class</th><th>ID</th><th>Number</th><th>Result</th><th>Timestamp</th><th>Details</th></tr>
+        @foreach (var item in Model.builds)
+        {
+    <tr>
+        <td>@item._class</td>
+        <td>@item.id</td>
+        <td>@item.number</td>
+        <td>@item.result</td>
+        
 
-<table>
-    <tr><th>class</th></tr>
+        @{
 
-    @foreach (var item in Model.builds)
-    {
-        <tr><td>@Html.DisplayFor(item => item._class)</td></tr>
-        <tr><td>@Html.DisplayFor(item => item.id)</td></tr>
-        <tr><td></td></tr>
-    }
-</table>
+            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            dateTime = dateTime.AddSeconds(Math.Round(Convert.ToInt64(item.timestamp)/1000d));
+            //string printDate = dateTime.ToShortDateString() + " " + dateTime.ToShortTimeString();
+            dateTime = TimeZoneInfo.ConvertTimeFromUtc(dateTime,
+            TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
+
+        }
+        <td>@dateTime</td>
+        <td><a href="http://localhost:8080/job/DotNet/@item.id/consoleText">View</a></td>
+    </tr>
+
+
+            }
+
+
+
+
+
+
+
+    </table>
 </div>

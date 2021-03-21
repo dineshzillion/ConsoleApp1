@@ -21,7 +21,7 @@ namespace BuildDashboard.Models
         public string _class { get; set; }
         public List<Build> builds { get; set; }
     }
-    
+
     public class Build
     {
         public string _class { get; set; }
@@ -31,6 +31,7 @@ namespace BuildDashboard.Models
 
         public string result { get; set; }
 
-        public long timestamp { get; set; }
+        public string timestamp { get; set; }
+
     }
 }
